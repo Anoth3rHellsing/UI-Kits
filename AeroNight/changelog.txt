@@ -1,0 +1,22 @@
+AERONIGHT - CHANGELOG
+======================
+
+[1.0.0] — 2026-09-09
+
+AÑADIDO:
+- Sistema de diseño oscuro completo inspirado en Wii Menu / Wii Shop Channel.
+- Paleta de colores con 11 tokens CSS (--an-bg-deep, --an-glow-cyan, --an-glass, etc.).
+- Fondo radial con gradiente elíptico centrado abajo.
+- Ondas SVG animadas (2 capas, direcciones opuestas, 12s y 18s).
+- Sistema de estrellas/partículas con animación twinkle (50 puntos aleatorios).
+- Componente Channel Tile con estados hover (scale(1.08)) y activo (glow cyan intenso).
+- Panel izquierdo con canal seleccionado (icono 180x180px, título, descripción, botón descarga).
+- Grid de canales responsive con auto-fill y minmax(140px, 1fr).
+- Botón de descarga con gradiente cyan→azul y glow en hover.
+- Control de audio con barras animadas y estado pausado.
+- Search Overlay con backdrop-filter: blur(8px) y foco cyan.
+- Barra inferior con logo itálica, reloj en tiempo real y botones circulares.
+- 6 variantes de color para iconos (green, blue, amber, red, purple, cyan) con overlay glossy.
+- Reset CSS con prefijo .an-reset para aislamiento de estilos.
+- Soporte responsive: layout vertical en < 900px, tiles 100px, iconos 48px.
+- DESIGN-SPEC.md con especificación completa de tokens, componentes y animaciones.

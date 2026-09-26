@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro Wave — Demo</title>
+<link rel="stylesheet" href="retrowave.css">
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Rajdhani:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #0d0221; margin: 0;">
+<div class="rw-reset">
+<!-- Background layers -->
+<div class="rw-bg">
+  <div class="rw-horizon"></div>
+  <div class="rw-grid-floor"></div>
+  <div class="rw-sun"></div>
+  <div class="rw-stars" id="stars"></div>
+</div>
+
+<!-- Main container -->
+<div class="rw-container">
+
+  <!-- Header -->
+  <header style="margin-bottom: 48px; text-align: center;">
+    <div class="rw-display rw-anim-flicker">RETRO WAVE</div>
+    <p class="rw-body" style="max-width: 600px; margin: 0 auto;">Synthwave design system with sunset gradients, perspective grids, and chrome text. Outrun aesthetic for the digital frontier.</p>
+  </header>
+
+  <!-- Cards Grid -->
+  <h2 class="rw-h2">Components</h2>
+  <div class="rw-grid">
+
+    <!-- Card 1: Buttons -->
+    <div class="rw-card rw-anim-slide-up">
+      <h3 class="rw-h2" style="font-size: 18px;">Buttons</h3>
+      <p class="rw-label" style="margin-bottom: 16px;">PRIMARY · OUTLINE · GHOST</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+        <button class="rw-btn rw-btn-primary">Primary</button>
+        <button class="rw-btn rw-btn-outline">Outline</button>
+        <button class="rw-btn rw-btn-ghost">Ghost</button>
+      </div>
+    </div>
+
+    <!-- Card 2: Inputs -->
+    <div class="rw-card rw-anim-slide-up" style="animation-delay: .1s;">
+      <h3 class="rw-h2" style="font-size: 18px;">Inputs</h3>
+      <p class="rw-label" style="margin-bottom: 16px;">FORM FIELDS</p>
+      <input class="rw-input" type="text" placeholder="Enter data...">
+      <div style="margin-top: 12px;">
+        <input class="rw-input" type="text" placeholder="Search..." value="synthwave">
+      </div>
+    </div>
+
+    <!-- Card 3: Badges -->
+    <div class="rw-card rw-anim-slide-up" style="animation-delay: .2s;">
+      <h3 class="rw-h2" style="font-size: 18px;">Badges</h3>
+      <p class="rw-label" style="margin-bottom: 16px;">STATUS TAGS</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <span class="rw-badge rw-badge-pink">New</span>
+        <span class="rw-badge rw-badge-blue">Info</span>
+        <span class="rw-badge rw-badge-purple">Premium</span>
+        <span class="rw-badge rw-badge-gold">VIP</span>
+      </div>
+    </div>
+
+    <!-- Card 4: Progress -->
+    <div class="rw-card rw-anim-slide-up" style="animation-delay: .3s;">
+      <h3 class="rw-h2" style="font-size: 18px;">Progress</h3>
+      <p class="rw-label" style="margin-bottom: 16px;">LOADING BARS</p>
+      <div style="margin-bottom: 12px;">
+        <div class="rw-label" style="margin-bottom: 6px;">DOWNLOAD</div>
+        <div class="rw-progress">
+          <div class="rw-progress-fill" style="width: 68%;"></div>
+        </div>
+      </div>
+      <div>
+        <div class="rw-label" style="margin-bottom: 6px;">ENERGY</div>
+        <div class="rw-progress">
+          <div class="rw-progress-fill" style="width: 85%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5: Toggle -->
+    <div class="rw-card rw-anim-slide-up" style="animation-delay: .4s;">
+      <h3 class="rw-h2" style="font-size: 18px;">Toggle Switch</h3>
+      <p class="rw-label" style="margin-bottom: 16px;">BINARY CONTROLS</p>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <label class="rw-toggle">
+          <input type="checkbox" checked>
+          <span class="rw-toggle-track">
+            <span class="rw-toggle-knob"></span>
+          </span>
+        </label>
+        <span class="rw-body">Turbo Mode</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px; margin-top: 12px;">
+        <label class="rw-toggle">
+          <input type="checkbox">
+          <span class="rw-toggle-track">
+            <span class="rw-toggle-knob"></span>
+          </span>
+        </label>
+        <span class="rw-body">Night Vision</span>
+      </div>
+    </div>
+
+    <!-- Card 6: Typography -->
+    <div class="rw-card rw-anim-slide-up" style="animation-delay: .5s;">
+      <h3 class="rw-h2" style="font-size: 18px;">Typography</h3>
+      <p class="rw-label" style="margin-bottom: 16px;">DISPLAY · BODY · MONO</p>
+      <div class="rw-h1" style="font-size: 24px; margin-bottom: 8px;">HEADING</div>
+      <div class="rw-body" style="margin-bottom: 8px;">Body text uses Rajdhani for that retro-futuristic feel.</div>
+      <div class="rw-mono" style="color: var(--rw-neon-blue);">SYS.INIT > LOADING...</div>
+    </div>
+
+  </div>
+
+  <!-- Animations Section -->
+  <h2 class="rw-h2" style="margin-top: 48px;">Animations</h2>
+  <div class="rw-grid">
+    <div class="rw-card rw-anim-pulse">
+      <h3 class="rw-h2" style="font-size: 18px;">Pulse Glow</h3>
+      <p class="rw-body">This card pulses with a pink/violet glow animation (2.5s cycle).</p>
+    </div>
+    <div class="rw-card">
+      <h3 class="rw-h2" style="font-size: 18px;">Chrome Shine</h3>
+      <p class="rw-body">The header above uses the chrome text effect with sliding shine animation.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--rw-glass-border); text-align: center;">
+    <p class="rw-label">Retro Wave UI Kit v1.0.0 · Synthwave Design System · September 2026</p>
+  </footer>
+
+</div>
+</div>
+
+<script>
+(function(){
+  // Generate stars
+  var starsEl = document.getElementById('stars');
+  for (var s = 0; s < 60; s++) {
+    var star = document.createElement('div');
+    star.className = 'rw-star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 50 + '%'; // Only top half
+    star.style.animationDelay = (Math.random() * 3) + 's';
+    starsEl.appendChild(star);
+  }
+})();
+</script>
+</body>
+</html>

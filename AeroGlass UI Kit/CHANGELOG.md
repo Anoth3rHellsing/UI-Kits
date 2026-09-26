@@ -1,0 +1,23 @@
+# AeroGlass UI Kit — Changelog
+
+## [1.0.0] — 2026-09-09
+
+### Added
+- Sistema de diseño Frutiger Aero completo para WPF y port web CSS
+- Paleta de 13 tokens de color (`cDeep`, `cBlue2`, `cGreen2`, `cAmber2`, `cRed2`, etc.)
+- Gradiente SkyBrush diagonal obligatorio como fondo raíz
+- Overlay TopGloss (170px) simulando iluminación superior sobre vidrio
+- Botones Glossy con hard-stop en offset 0.49→0.51 y shine interior de 17px
+- Componentes WPF: Gloss Button, Ghost Button, Chrome Button, Nav RadioButton, Toggle Switch, CheckBox, Card, ProgressBar, TextBox, ListView, TabControl, ScrollBar
+- Sombras coloreadas `#0A3A56` (nunca negro/gris) integradas en la temperatura de color de la escena
+- Tipografía Segoe UI con `TextFormattingMode="Ideal"` y `SnapsToDevicePixels="True"`
+- Burbujas decorativas asimétricas con RadialGradientBrush off-center
+- WindowChrome configurado con CaptionHeight 46px, MinHeight 620, MinWidth 980
+- Port CSS completo en index.html con backdrop-filter, gradientes glossy y animaciones
+- Tema musical "Another Shop Theme (HQ).mp3" con autoplay y fallback por interacción
+- Carousel interactivo con dots, navegación prev/next y auto-advance cada 5s
+- Search filter en tiempo real sobre tarjetas de aplicaciones
+- SKILL.md con protocolo de aplicación y verificación QA
+- QA-CHECKLIST.md con 7 dimensiones de auditoría y scripts PowerShell de detección
+- DESIGN-SPEC.md con especificación canónica de tokens, gradientes y componentes
+- Notas de portabilidad para Web/CSS, WinUI/MAUI y Flutter

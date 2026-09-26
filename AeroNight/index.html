@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AeroNight — Demo</title>
+<link rel="stylesheet" href="aeronight.css">
+<style>
+  /* Demo-only: generate stars via JS */
+</style>
+</head>
+<body style="background-color: #051525; margin: 0; overflow: hidden;">
+<div class="an-reset">
+
+  <!-- Background -->
+  <div class="an-bg">
+    <div class="an-wave an-wave-1">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="rgba(109,213,250,.3)" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,138.7C672,128,768,160,864,181.3C960,203,1056,213,1152,197.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
+      </svg>
+    </div>
+    <div class="an-wave an-wave-2">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="rgba(100,180,255,.2)" d="M0,224L48,213.3C96,203,192,181,288,186.7C384,192,480,224,576,234.7C672,245,768,235,864,208C960,181,1056,139,1152,128C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
+      </svg>
+    </div>
+    <div class="an-stars" id="stars"></div>
+  </div>
+
+  <!-- Main Layout -->
+  <div class="an-container">
+
+    <!-- Left Panel: Selected Channel -->
+    <div class="an-left">
+      <div class="an-selected" id="selectedChannel">
+        <div class="an-sel-icon an-icon-green">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h2 class="an-sel-title" id="selTitle">Weather Channel</h2>
+        <p class="an-sel-desc" id="selDesc">Check the current weather forecast and upcoming conditions for your area.</p>
+        <a href="#" class="an-btn-download">
+          <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          Download
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Panel: Channel Grid -->
+    <div class="an-right">
+      <div class="an-panel-header">
+        <h3 class="an-panel-title">All Channels</h3>
+        <div class="an-audio-ctrl" id="audioCtrl">
+          <div class="an-audio-bars" id="audioBars">
+            <span></span><span></span><span></span>
+          </div>
+          <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        </div>
+      </div>
+
+      <div class="an-grid" id="channelGrid">
+        <!-- Channels injected by JS -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="an-bottom">
+    <div class="an-bottom-left">
+      <span class="an-logo">AeroNight</span>
+      <span class="an-clock" id="clock">12:00 PM</span>
+    </div>
+    <div class="an-bottom-right">
+      <button class="an-bottom-btn" id="searchBtn" type="button">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      </button>
+      <button class="an-bottom-btn" type="button">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Search Overlay -->
+  <div class="an-search-overlay" id="searchOverlay">
+    <div class="an-search-box">
+      <input class="an-search-input" type="text" placeholder="Search channels..." id="searchInput">
+      <p class="an-search-hint">Press ESC to close</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  // Channel data
+  var channels = [
+    { name: 'Weather', icon: 'green', svg: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>', desc: 'Check the current weather forecast and upcoming conditions for your area.' },
+    { name: 'Photos', icon: 'blue', svg: '<path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>', desc: 'Browse and organize your photo collection with beautiful galleries.' },
+    { name: 'Music', icon: 'amber', svg: '<path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>', desc: 'Stream your favorite tracks and discover new artists.' },
+    { name: 'News', icon: 'red', svg: '<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/>', desc: 'Stay updated with the latest headlines from around the world.' },
+    { name: 'Games', icon: 'purple', svg: '<path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>', desc: 'Play classic and new games directly from your console.' },
+    { name: 'Shop', icon: 'cyan', svg: '<path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>', desc: 'Download new channels and applications from the shop.' },
+    { name: 'Settings', icon: 'blue', svg: '<path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84a.48.48 0 0 0-.48.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 0 0-.59.22L2.09 8.83a.49.49 0 0 0 .12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.27.41.48.41h3.84c.24 0 .44-.17.48-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/>', desc: 'Configure your system preferences and network settings.' },
+    { name: 'Mail', icon: 'green', svg: '<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>', desc: 'Read and send messages to your friends and family.' }
+  ];
+
+  var grid = document.getElementById('channelGrid');
+  var selTitle = document.getElementById('selTitle');
+  var selDesc = document.getElementById('selDesc');
+  var selIcon = document.querySelector('.an-sel-icon');
+  var selected = 0;
+
+  function renderGrid() {
+    grid.innerHTML = '';
+    channels.forEach(function(ch, i) {
+      var tile = document.createElement('div');
+      tile.className = 'an-tile' + (i === selected ? ' an-active' : '');
+      tile.innerHTML = '<div class="an-tile-icon an-icon-' + ch.icon + '"><svg viewBox="0 0 24 24">' + ch.svg + '</svg></div><div class="an-tile-name">' + ch.name + '</div>';
+      tile.addEventListener('click', function() { selectChannel(i); });
+      grid.appendChild(tile);
+    });
+  }
+
+  function selectChannel(i) {
+    selected = i;
+    var ch = channels[i];
+    selTitle.textContent = ch.name + ' Channel';
+    selDesc.textContent = ch.desc;
+    selIcon.className = 'an-sel-icon an-icon-' + ch.icon;
+    selIcon.innerHTML = '<svg viewBox="0 0 24 24">' + ch.svg + '</svg>';
+    // Re-trigger animation
+    var sel = document.getElementById('selectedChannel');
+    sel.style.animation = 'none';
+    sel.offsetHeight; // reflow
+    sel.style.animation = '';
+    renderGrid();
+  }
+
+  renderGrid();
+
+  // Stars
+  var starsEl = document.getElementById('stars');
+  for (var s = 0; s < 50; s++) {
+    var star = document.createElement('div');
+    star.className = 'an-star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = (Math.random() * 3) + 's';
+    starsEl.appendChild(star);
+  }
+
+  // Clock
+  function updateClock() {
+    var now = new Date();
+    var h = now.getHours();
+    var m = now.getMinutes();
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12; if (h === 0) h = 12;
+    m = m < 10 ? '0' + m : m;
+    document.getElementById('clock').textContent = h + ':' + m + ' ' + ampm;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // Search overlay
+  var overlay = document.getElementById('searchOverlay');
+  document.getElementById('searchBtn').addEventListener('click', function() {
+    overlay.classList.add('an-open');
+    document.getElementById('searchInput').focus();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') overlay.classList.remove('an-open');
+  });
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) overlay.classList.remove('an-open');
+  });
+
+  // Audio toggle (visual only for demo)
+  var audioBars = document.getElementById('audioBars');
+  var audioPlaying = true;
+  document.getElementById('audioCtrl').addEventListener('click', function() {
+    audioPlaying = !audioPlaying;
+    if (audioPlaying) audioBars.classList.remove('an-paused');
+    else audioBars.classList.add('an-paused');
+  });
+
+})();
+</script>
+</body>
+</html>

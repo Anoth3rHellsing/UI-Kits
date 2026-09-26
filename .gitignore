@@ -1,0 +1,10 @@
+node_modules/
+Executables/
+*.zip
+*.exe
+*.log
+*.mp3
+.DS_Store
+Thumbs.db
+desktop.ini
+$gi

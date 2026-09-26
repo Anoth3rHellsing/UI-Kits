@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"C:/Users/nicol/OneDrive/Documents/ClaudeCode/UI Kits\" rev-parse --is-inside-work-tree)"
+    ]
+  }
+}

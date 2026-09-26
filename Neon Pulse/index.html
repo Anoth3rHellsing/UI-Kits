@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neon Pulse — Demo</title>
+<link rel="stylesheet" href="neonpulse.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #0a0a0f; margin: 0;">
+<div class="np-reset">
+<!-- Background layers -->
+<div class="np-bg"></div>
+<div class="np-scanlines"></div>
+<div class="np-vignette"></div>
+<div class="np-scanline-bar"></div>
+
+<!-- Main container -->
+<div class="np-container">
+
+  <!-- Header -->
+  <header style="margin-bottom: 40px;">
+    <h1 class="np-h1 np-anim-flicker">Neon Pulse</h1>
+    <p class="np-body" style="max-width: 600px;">Cyberpunk design system with neon glows, grid perspective, and glassmorphism. Built for dark interfaces that demand attention.</p>
+  </header>
+
+  <!-- Cards Grid -->
+  <h2 class="np-h2">Components</h2>
+  <div class="np-grid">
+
+    <!-- Card 1: Buttons -->
+    <div class="np-card np-anim-slide-up">
+      <h3 class="np-h3">Buttons</h3>
+      <p class="np-body np-small" style="margin-bottom: 16px;">Primary, ghost, and color variants</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+        <button class="np-btn np-btn-primary">Primary</button>
+        <button class="np-btn np-btn-ghost">Ghost</button>
+        <button class="np-btn np-btn-magenta">Magenta</button>
+        <button class="np-btn np-btn-green">Green</button>
+      </div>
+    </div>
+
+    <!-- Card 2: Inputs -->
+    <div class="np-card np-anim-slide-up" style="animation-delay: .1s;">
+      <h3 class="np-h3">Inputs</h3>
+      <p class="np-body np-small" style="margin-bottom: 16px;">Form fields with neon focus states</p>
+      <input class="np-input" type="text" placeholder="Enter data...">
+      <div style="margin-top: 12px;">
+        <input class="np-input" type="text" placeholder="Search..." value="cyberpunk">
+      </div>
+    </div>
+
+    <!-- Card 3: Badges -->
+    <div class="np-card np-anim-slide-up" style="animation-delay: .2s;">
+      <h3 class="np-h3">Badges</h3>
+      <p class="np-body np-small" style="margin-bottom: 16px;">Status indicators and tags</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <span class="np-badge np-badge-cyan">Online</span>
+        <span class="np-badge np-badge-magenta">Live</span>
+        <span class="np-badge np-badge-green">Active</span>
+        <span class="np-badge np-badge-amber">Warning</span>
+        <span class="np-badge np-badge-red">Error</span>
+      </div>
+    </div>
+
+    <!-- Card 4: Progress -->
+    <div class="np-card np-anim-slide-up" style="animation-delay: .3s;">
+      <h3 class="np-h3">Progress</h3>
+      <p class="np-body np-small" style="margin-bottom: 16px;">Loading and status bars</p>
+      <div style="margin-bottom: 12px;">
+        <div class="np-small" style="margin-bottom: 6px;">Upload Progress</div>
+        <div class="np-progress">
+          <div class="np-progress-fill" style="width: 72%;"></div>
+        </div>
+      </div>
+      <div>
+        <div class="np-small" style="margin-bottom: 6px;">System Load</div>
+        <div class="np-progress">
+          <div class="np-progress-fill" style="width: 45%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5: Toggle -->
+    <div class="np-card np-anim-slide-up" style="animation-delay: .4s;">
+      <h3 class="np-h3">Toggle Switch</h3>
+      <p class="np-body np-small" style="margin-bottom: 16px;">Binary controls with glow states</p>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <label class="np-toggle">
+          <input type="checkbox" checked>
+          <span class="np-toggle-track">
+            <span class="np-toggle-knob"></span>
+          </span>
+        </label>
+        <span class="np-body">Enabled</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px; margin-top: 12px;">
+        <label class="np-toggle">
+          <input type="checkbox">
+          <span class="np-toggle-track">
+            <span class="np-toggle-knob"></span>
+          </span>
+        </label>
+        <span class="np-body">Disabled</span>
+      </div>
+    </div>
+
+    <!-- Card 6: Typography -->
+    <div class="np-card np-anim-slide-up" style="animation-delay: .5s;">
+      <h3 class="np-h3">Typography</h3>
+      <p class="np-body np-small" style="margin-bottom: 16px;">Display and body text styles</p>
+      <div class="np-h1" style="font-size: 24px; margin-bottom: 8px;">HEADING</div>
+      <div class="np-body" style="margin-bottom: 8px;">Body text uses Rajdhani for readability with subtle letter spacing.</div>
+      <div class="np-mono" style="color: var(--np-neon-cyan);">const data = await fetch();</div>
+    </div>
+
+  </div>
+
+  <!-- Animations Section -->
+  <h2 class="np-h2" style="margin-top: 48px;">Animations</h2>
+  <div class="np-grid">
+    <div class="np-card np-anim-pulse">
+      <h3 class="np-h3">Pulse Glow</h3>
+      <p class="np-body">This card pulses with a cyan glow animation (2s cycle).</p>
+    </div>
+    <div class="np-card np-anim-glitch">
+      <h3 class="np-h3">Glitch on Hover</h3>
+      <p class="np-body">Hover over this card to trigger the glitch distortion effect.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--np-border);">
+    <p class="np-small">Neon Pulse UI Kit v1.0.0 · Cyberpunk Design System · September 2026</p>
+  </footer>
+
+</div>
+</div>
+</body>
+</html>
